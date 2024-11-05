@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我爱雨雨</title>
+    <style>
+        /* 背景设置为渐变色并添加动画 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+            background-size: 200% 200%;
+            animation: backgroundAnimation 10s ease infinite;
+        }
+
+        /* 文字样式和动画 */
+        h1 {
+            font-size: 5em;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.4);
+            animation: textAnimation 5s infinite;
+        }
+
+        /* 文字颜色渐变动画 */
+        @keyframes textAnimation {
+            0% {
+                color: #ff9a9e;
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 10px rgba(255, 105, 180, 0.6), 0 0 20px rgba(255, 105, 180, 0.4);
+            }
+            25% {
+                color: #fad0c4;
+                transform: scale(1.2) rotate(10deg);
+                text-shadow: 0 0 15px rgba(255, 140, 0, 0.6), 0 0 25px rgba(255, 140, 0, 0.4);
+            }
+            50% {
+                color: #fcb69f;
+                transform: scale(1) rotate(-10deg);
+                text-shadow: 0 0 15px rgba(255, 69, 0, 0.6), 0 0 25px rgba(255, 69, 0, 0.4);
+            }
+            75% {
+                color: #ff9a9e;
+                transform: scale(1.2) rotate(0deg);
+                text-shadow: 0 0 20px rgba(255, 20, 147, 0.6), 0 0 30px rgba(255, 20, 147, 0.4);
+            }
+            100% {
+                color: #fad0c4;
+                transform: scale(1) rotate(0deg);
+                text-shadow: 0 0 10px rgba(255, 105, 180, 0.6), 0 0 20px rgba(255, 105, 180, 0.4);
+            }
+        }
+
+        /* 背景渐变色的移动动画 */
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 添加星星闪烁效果 */
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: starTwinkle 3s infinite ease-in-out;
+            opacity: 0.8;
+        }
+
+        @keyframes starTwinkle {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <h1>我爱雨雨</h1>
+
+    <script>
+        // JavaScript 用于生成随机位置的星星闪烁效果
+        function createStar() {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.animationDuration = 2 + Math.random() * 3 + "s";
+            document.body.appendChild(star);
+
+            // 一定时间后移除星星，避免页面上元素过多
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        // 每隔300毫秒生成一个星星
+        setInterval(createStar, 300);
+    </script>
+</body>
+</html>
+
